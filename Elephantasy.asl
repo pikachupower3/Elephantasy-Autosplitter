@@ -36,7 +36,7 @@ split {
     if (settings["moles"]) {
         if (current.moles != old.moles) {
             int moles = (int)current.moles;
-            if (settings[moles.ToString() + "1_mole"]) {
+            if (settings[moles.ToString() + "_mole"]) {
                 return true;
             }
         }
