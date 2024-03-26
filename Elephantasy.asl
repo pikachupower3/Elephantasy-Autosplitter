@@ -1,6 +1,7 @@
 state("Elephant") {
     double gems : "Elephant.exe", 0x445C40, 0x60, 0x10, 0x190, 0x90;
     double moles: "Elephant.exe", 0x445C40, 0x60, 0x10, 0x190, 0x10;
+    double keys: "Elephant.exe", 0x445C40, 0x60, 0x10, 0x190, 0x20;
 }
 
 startup {
@@ -17,10 +18,8 @@ startup {
     settings.Add("2_mole", true, "2 Mole Collected", "moles");
     settings.Add("3_mole", true, "3 Mole Collected", "moles");
     settings.Add("4_mole", true, "Warp Whistle Collected", "moles");
-}
-
-update {
-
+    
+    settings.Add("lionkey", true, "Lion Key Collected");
 }
 
 split {
@@ -40,6 +39,10 @@ split {
                 return true;
             }
         }
+    }
+
+    if (settings["lionkey"]) {
+        return current.keys - old.keys == 100;
     }
 
     return false;
